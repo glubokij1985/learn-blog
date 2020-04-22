@@ -7,6 +7,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import { AuthService } from './shared/services/auth.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -28,10 +30,14 @@ import { EditPageComponent } from './edit-page/edit-page.component';
                 {path: 'create', component: CreatePageComponent},
                 {path: 'post/:id/edit', component: EditPageComponent},
             ]}
-        ])
+        ]),
+        SharedModule
     ],
     exports: [
         RouterModule
+    ],
+    providers: [
+        AuthService
     ]
 })
 export class AdminModule { }
