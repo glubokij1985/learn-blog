@@ -18,13 +18,15 @@ export class LoginPageComponent implements OnInit {
   constructor(
     public auth: AuthService,
     private router: Router,
-    private rout: ActivatedRoute
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.rout.queryParams.subscribe((params: Params) => {
+    this.route.queryParams.subscribe((params: Params) => {
       if (params['loginAgain']) {
         this.message = 'Please enter data';
+      } else if (params['authFailed']) {
+        this.message = 'Session was expired. Enter data again';
       }
     });
     this.form = new FormGroup({
